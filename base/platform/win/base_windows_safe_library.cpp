@@ -81,7 +81,7 @@ void InitDynamicLibraries() {
 	static const auto Inited = [] {
 		const auto kernel = LoadLibrary(L"kernel32.dll");
 		if (LOAD_SYMBOL(kernel, SetDefaultDllDirectories)) {
-			SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_SYSTEM32);
+			SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_SYSTEM32 | LOAD_LIBRARY_SEARCH_USER_DIRS);
 		} else {
 			CheckDynamicLibraries();
 		}
